@@ -6,6 +6,11 @@
 <script src="./support.js"></script>
 <link rel="icon" href="assets/logo-mark.png">
 <template id="__bundler_thumbnail" data-bg-color="#F6EEE1"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect x="80" y="130" width="240" height="140" rx="40" fill="#191713"/><rect x="110" y="200" width="90" height="40" rx="8" fill="#B67141"/><text x="215" y="190" font-family="sans-serif" font-size="28" font-weight="700" fill="#DDCCB7">MONT</text><text x="215" y="225" font-family="sans-serif" font-size="20" fill="#F6EEE1">ILIĆ</text></svg></template>
+<script>
+(function(){var done=new WeakSet();function tryLoad(s){if(done.has(s)||!s.id)return;done.add(s);var u='assets/images/'+s.id+'.jpg',i=new Image();i.onload=function(){s.setAttribute('src',u)};i.src=u;}
+function scan(){document.querySelectorAll('image-slot').forEach(tryLoad)}
+new MutationObserver(scan).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',scan);})();
+</script>
 </head>
 <body>
 <x-dc>
@@ -141,7 +146,7 @@ h1,h2,h3,p{margin:0}
   <div style="flex:1 1 460px;min-width:0;position:relative">
     <div ref="{{ heroImgRef }}" data-hero="img" style="position:relative;height:clamp(440px,76vh,820px);border-radius:clamp(32px,4vw,56px);overflow:hidden;background:#EDE4D5">
       <div data-parallax="0.06" style="position:absolute;left:0;right:0;top:-7%;bottom:-7%">
-        <image-slot id="hero-main" src="assets/images/hero-main.jpg" shape="rect" placeholder="Glavna fotografija: završen pod u enterijeru (sa Instagram profila) (potrebno da klijent dostavi)"></image-slot>
+        <image-slot id="hero-main" shape="rect" placeholder="Glavna fotografija: završen pod u enterijeru (sa Instagram profila) (potrebno da klijent dostavi)"></image-slot>
       </div>
       <div style="position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;border-radius:999px;background:rgba(251,247,240,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);pointer-events:none">
         <span style="width:44px;height:44px;border-radius:14px;background-color:#B67141;background-image:linear-gradient(105deg, rgba(255,240,220,0) 30%, rgba(255,240,220,.4) 50%, rgba(255,240,220,0) 70%), repeating-linear-gradient(90deg, rgba(110,64,28,.16) 0 1px, transparent 1px 4px, rgba(110,64,28,.08) 4px 6px, transparent 6px 9px)"></span>
@@ -193,7 +198,7 @@ h1,h2,h3,p{margin:0}
         <article data-hov="" data-lift="translateY(-6px)" style="display:flex;flex-direction:column;gap:18px;transition:transform .8s cubic-bezier(.22,1,.36,1)">
           <div style="position:relative;aspect-ratio:4/5;border-radius:clamp(28px,3vw,40px);overflow:hidden;background:#EDE4D5">
             <div data-tf="scale(1.06)" style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.22,1,.36,1)">
-              <image-slot id="svc-{{ s.id }}" src="assets/images/svc-{{ s.id }}.jpg" shape="rect" placeholder="{{ s.ph }}"></image-slot>
+              <image-slot id="svc-{{ s.id }}" shape="rect" placeholder="{{ s.ph }}"></image-slot>
             </div>
             <span style="position:absolute;top:16px;left:16px;padding:7px 13px;border-radius:999px;background:rgba(251,247,240,.9);font-size:12px;font-weight:700;letter-spacing:.08em;pointer-events:none">{{ s.num }}</span>
             <div data-hi="" style="position:absolute;left:12px;right:12px;bottom:12px;padding:16px 18px;border-radius:24px;background:rgba(25,23,19,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#F6EEE1;font-size:14px;line-height:1.5;opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);pointer-events:none">{{ s.desc }}</div>
@@ -234,8 +239,8 @@ h1,h2,h3,p{margin:0}
     </div>
     <div data-reveal="clip">
       <div ref="{{ baRef }}" style="position:relative;aspect-ratio:{{ baAspect }};border-radius:clamp(32px,4vw,56px);overflow:hidden;background:#DDCCB7;user-select:none">
-        <div style="position:absolute;inset:0"><image-slot id="ba-before" src="assets/images/ba-before.jpg" shape="rect" placeholder="Fotografija PRE: istrošen, star pod (potrebno da klijent dostavi)"></image-slot></div>
-        <div ref="{{ baTop }}" style="position:absolute;inset:0;clip-path:inset(0 0 0 70%)"><image-slot id="ba-after" src="assets/images/ba-after.jpg" shape="rect" placeholder="Fotografija POSLE: isti pod nakon hoblovanja i lakiranja (potrebno da klijent dostavi)"></image-slot></div>
+        <div style="position:absolute;inset:0"><image-slot id="ba-before" shape="rect" placeholder="Fotografija PRE: istrošen, star pod (potrebno da klijent dostavi)"></image-slot></div>
+        <div ref="{{ baTop }}" style="position:absolute;inset:0;clip-path:inset(0 0 0 70%)"><image-slot id="ba-after" shape="rect" placeholder="Fotografija POSLE: isti pod nakon hoblovanja i lakiranja (potrebno da klijent dostavi)"></image-slot></div>
         <span style="position:absolute;top:18px;left:18px;padding:9px 16px;border-radius:999px;background:rgba(251,247,240,.9);font-size:13px;font-weight:700;pointer-events:none">Pre</span>
         <span style="position:absolute;top:18px;right:18px;padding:9px 16px;border-radius:999px;background:#191713;color:#F6EEE1;font-size:13px;font-weight:700;pointer-events:none">Posle</span>
         <div ref="{{ baHandle }}" role="slider" tabindex="0" aria-label="Uporedite pre i posle" aria-valuemin="0" aria-valuemax="100" onPointerDown="{{ baDown }}" onKeyDown="{{ baKey }}" style="position:absolute;top:0;bottom:0;left:70%;width:80px;margin-left:-40px;display:flex;justify-content:center;align-items:center;cursor:ew-resize;touch-action:none">
@@ -256,10 +261,10 @@ h1,h2,h3,p{margin:0}
 <section id="o-nama" data-screen-label="05 O nama" style="padding:clamp(100px,13vw,190px) clamp(20px,4vw,56px);max-width:1480px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(48px,7vw,110px);align-items:center">
   <div style="flex:1 1 420px;min-width:0;position:relative;padding-bottom:clamp(40px,6vw,80px);padding-right:clamp(24px,5vw,80px)">
     <div data-reveal="clip" style="position:relative;aspect-ratio:4/5;border-radius:clamp(32px,4vw,56px);overflow:hidden;background:#EDE4D5">
-      <div data-parallax="0.07" style="position:absolute;left:0;right:0;top:-8%;bottom:-8%"><image-slot id="about-main" src="assets/images/about-main.jpg" shape="rect" placeholder="Portret: porodica / ekipa na poslu (potrebno da klijent dostavi)"></image-slot></div>
+      <div data-parallax="0.07" style="position:absolute;left:0;right:0;top:-8%;bottom:-8%"><image-slot id="about-main" shape="rect" placeholder="Portret: porodica / ekipa na poslu (potrebno da klijent dostavi)"></image-slot></div>
     </div>
     <div data-reveal="up" data-delay="250" style="position:absolute;right:0;bottom:0;width:44%;aspect-ratio:1/1;border-radius:clamp(26px,3vw,40px);overflow:hidden;background:#DDCCB7;box-shadow:0 0 0 8px #F6EEE1">
-      <image-slot id="about-detail" src="assets/images/about-detail.jpg" shape="rect" placeholder="Detalj: ruke majstora i alat (potrebno da klijent dostavi)"></image-slot>
+      <image-slot id="about-detail" shape="rect" placeholder="Detalj: ruke majstora i alat (potrebno da klijent dostavi)"></image-slot>
     </div>
   </div>
   <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:clamp(24px,3vw,36px)">
@@ -326,7 +331,7 @@ h1,h2,h3,p{margin:0}
       <figure data-reveal="clip" data-delay="{{ g.delay }}" style="margin:0;grid-column:{{ g.col }};grid-row:{{ g.row }};min-width:0">
         <div data-hov="" style="position:relative;width:100%;height:100%;border-radius:clamp(26px,3vw,40px);overflow:hidden;background:#EDE4D5">
           <div data-tf="scale(1.045)" style="position:absolute;inset:0;transition:transform 1.4s cubic-bezier(.22,1,.36,1)">
-            <div data-parallax="0.04" style="position:absolute;left:0;right:0;top:-5%;bottom:-5%"><image-slot id="gal-{{ g.id }}" src="assets/images/gal-{{ g.id }}.jpg" shape="rect" placeholder="{{ g.ph }}"></image-slot></div>
+            <div data-parallax="0.04" style="position:absolute;left:0;right:0;top:-5%;bottom:-5%"><image-slot id="gal-{{ g.id }}" shape="rect" placeholder="{{ g.ph }}"></image-slot></div>
           </div>
           <figcaption data-hi="" style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 10px 10px 18px;border-radius:999px;background:rgba(251,247,240,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transform:translateY(14px);transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);pointer-events:none">
             <span style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ g.cat }}</span><span style="font-size:12px;color:#6B5E4E">Opis i lokacija: dostaviti</span></span>
@@ -360,7 +365,7 @@ h1,h2,h3,p{margin:0}
     <sc-for list="{{ materials }}" as="m" hint-placeholder-count="6">
       <figure style="margin:0;flex:none;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;width:clamp(200px,22vw,320px);transform:translateY({{ m.offset }})">
         <div data-mat="" style="position:relative;aspect-ratio:2/3;border-radius:999px;overflow:hidden;background:#DDCCB7">
-          <image-slot id="mat-{{ m.id }}" src="assets/images/mat-{{ m.id }}.jpg" shape="rect" placeholder="{{ m.ph }}"></image-slot>
+          <image-slot id="mat-{{ m.id }}" shape="rect" placeholder="{{ m.ph }}"></image-slot>
         </div>
         <figcaption style="display:flex;align-items:center;gap:10px;padding-left:12px;font-size:14px;font-weight:600"><span style="font-size:12px;color:#905027;font-weight:700">{{ m.num }}</span>{{ m.cap }}</figcaption>
       </figure>
